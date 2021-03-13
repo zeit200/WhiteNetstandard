@@ -1,3 +1,4 @@
+using System.Drawing;
 using System.Windows;
 using System.Windows.Automation;
 using TestStack.White.Recording;

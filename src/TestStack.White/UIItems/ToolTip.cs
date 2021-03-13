@@ -1,3 +1,4 @@
+using System.Drawing;
 using System.Windows;
 using System.Windows.Automation;
 using TestStack.White.UIItems.Actions;
@@ -20,7 +21,7 @@ namespace TestStack.White.UIItems
             return automationElement.Current.ControlType.Equals(ControlType.ToolTip) ? new ToolTip(automationElement, new NullActionListener()) : null;
         }
 
-        public virtual Point LeftOutside(Rect rect)
+        public virtual Point LeftOutside(Rectangle rect)
         {
             return new Point((int) Bounds.Left - 1, (int) rect.Y);
         }

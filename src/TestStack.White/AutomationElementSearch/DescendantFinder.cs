@@ -1,3 +1,4 @@
+using Interop.UIAutomationClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,12 +23,12 @@ namespace TestStack.White.AutomationElementSearch
 
         public virtual AutomationElement Descendant(Condition condition)
         {
-            return automationElement.FindFirst(TreeScope.Descendants, condition);
+            return automationElement.FindFirst(TreeScope.TreeScope_Descendants, condition);
         }
 
         public virtual List<AutomationElement> Descendants(AutomationSearchCondition automationSearchCondition)
         {
-            var collection = automationElement.FindAll(TreeScope.Descendants, automationSearchCondition.Condition);
+            var collection = automationElement.FindAll(TreeScope.TreeScope_Descendants, automationSearchCondition.Condition);
             var enumerable = collection.Cast<AutomationElement>();
             return new List<AutomationElement>(enumerable);
         }

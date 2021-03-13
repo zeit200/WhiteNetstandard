@@ -173,7 +173,6 @@ namespace TestStack.White.InputDevices
         /// <summary>
         /// Implements <see cref="IKeyboardWithActionListener.ActionPerformed(IActionListener)"/>
         /// </summary>
-        /// <remarks>
         public virtual void ActionPerformed(IActionListener actionListener)
         {
             actionListener.ActionPerformed(new Action(ActionType.WindowMessage));

@@ -1,3 +1,5 @@
+using Interop.UIAutomationClient;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Automation;
 using TestStack.White.UIItems.Actions;
@@ -25,29 +27,29 @@ namespace TestStack.White.UIItems.Scrolling
             get { return ScrollPattern.Current.VerticalScrollPercent; }
         }
 
-        public override Rect Bounds
+        public override Rectangle Bounds
         {
-            get { return Rect.Empty; }
+            get { return Rectangle.Empty; }
         }
 
         public virtual void ScrollUp()
         {
-            Scroll(ScrollAmount.SmallDecrement);
+            Scroll(ScrollAmount.ScrollAmount_SmallDecrement);
         }
 
         public virtual void ScrollDown()
         {
-            Scroll(ScrollAmount.SmallIncrement);
+            Scroll(ScrollAmount.ScrollAmount_SmallIncrement);
         }
 
         public virtual void ScrollUpLarge()
         {
-            Scroll(ScrollAmount.LargeDecrement);
+            Scroll(ScrollAmount.ScrollAmount_LargeDecrement);
         }
 
         public virtual void ScrollDownLarge()
         {
-            Scroll(ScrollAmount.LargeIncrement);
+            Scroll(ScrollAmount.ScrollAmount_LargeIncrement);
         }
 
         public virtual bool IsScrollable
@@ -75,22 +77,22 @@ namespace TestStack.White.UIItems.Scrolling
             if (!IsScrollable) return;
             switch (amount)
             {
-                case ScrollAmount.LargeDecrement:
+                case ScrollAmount.ScrollAmount_LargeDecrement:
                     ScrollPattern.SetScrollPercent(
                         ScrollPattern.Current.HorizontalScrollPercent,
                         ValidPercentage(ScrollPattern.Current.VerticalScrollPercent - ScrollPercentage));
                     break;
-                case ScrollAmount.SmallDecrement:
+                case ScrollAmount.ScrollAmount_SmallDecrement:
                     ScrollPattern.SetScrollPercent(
                         ScrollPattern.Current.HorizontalScrollPercent,
                         ValidPercentage(ScrollPattern.Current.VerticalScrollPercent - SmallPercentage()));
                     break;
-                case ScrollAmount.LargeIncrement:
+                case ScrollAmount.ScrollAmount_LargeIncrement:
                     ScrollPattern.SetScrollPercent(
                         ScrollPattern.Current.HorizontalScrollPercent,
                         ValidPercentage(ScrollPattern.Current.VerticalScrollPercent + ScrollPercentage));
                     break;
-                case ScrollAmount.SmallIncrement:
+                case ScrollAmount.ScrollAmount_SmallIncrement:
                     ScrollPattern.SetScrollPercent(
                         ScrollPattern.Current.HorizontalScrollPercent,
                         ValidPercentage(ScrollPattern.Current.VerticalScrollPercent + SmallPercentage()));

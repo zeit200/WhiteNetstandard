@@ -1,3 +1,5 @@
+using Interop.UIAutomationClient;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Automation;
 using TestStack.White.UIItems.Actions;
@@ -25,9 +27,9 @@ namespace TestStack.White.UIItems.Scrolling
             get { return ScrollPattern.Current.HorizontalViewSize; }
         }
 
-        public override Rect Bounds
+        public override Rectangle Bounds
         {
-            get { return Rect.Empty; }
+            get { return Rectangle.Empty; }
         }
 
         protected virtual void Scroll(ScrollAmount amount)
@@ -39,22 +41,22 @@ namespace TestStack.White.UIItems.Scrolling
 
         public virtual void ScrollLeft()
         {
-            Scroll(ScrollAmount.SmallDecrement);
+            Scroll(ScrollAmount.ScrollAmount_SmallDecrement);
         }
 
         public virtual void ScrollRight()
         {
-            Scroll(ScrollAmount.SmallIncrement);
+            Scroll(ScrollAmount.ScrollAmount_SmallIncrement);
         }
 
         public virtual void ScrollLeftLarge()
         {
-            Scroll(ScrollAmount.LargeDecrement);
+            Scroll(ScrollAmount.ScrollAmount_LargeDecrement);
         }
 
         public virtual void ScrollRightLarge()
         {
-            Scroll(ScrollAmount.LargeIncrement);
+            Scroll(ScrollAmount.ScrollAmount_LargeIncrement);
         }
 
         public virtual bool IsScrollable

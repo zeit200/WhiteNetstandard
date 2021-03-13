@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Automation;
 using TestStack.White.UIItems.Actions;
@@ -56,7 +57,7 @@ namespace TestStack.White.UIItems.TableItems
 
         public virtual void SetToMaximum() {}
 
-        public virtual Rect Bounds
+        public virtual Rectangle Bounds
         {
             get { throw new NotSupportedException(); }
         }

@@ -1,3 +1,4 @@
+using System.Drawing;
 using System.Windows;
 using System.Windows.Automation;
 using TestStack.White.UIA;
@@ -28,6 +29,6 @@ namespace TestStack.White.UIItems.Scrolling
 
         public abstract void SetToMinimum();
         public abstract void SetToMaximum();
-        public abstract Rect Bounds { get; }
+        public abstract Rectangle Bounds { get; }
     }
 }

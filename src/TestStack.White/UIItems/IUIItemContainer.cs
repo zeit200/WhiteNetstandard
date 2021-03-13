@@ -157,6 +157,7 @@ namespace TestStack.White.UIItems
 
         /// <summary>
         /// Checks if an UIItem which matches specified search criteria exists.
+        /// </summary>
         /// <param name="searchCriteria">Criteria provided to search UIItem</param>
         /// <returns><c>true</c> if there is any; otherwise, <c>false</c>.</returns>
         bool Exists(SearchCriteria searchCriteria);

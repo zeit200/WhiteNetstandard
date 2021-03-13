@@ -6,5 +6,10 @@ namespace TestStack.White.SystemExtensions
         {
             return @double == double.PositiveInfinity || @double == double.NegativeInfinity || double.IsNaN(@double);
         }
+
+        public static bool IsInvalid(this int @int)
+        {
+            return @int == int.MaxValue || @int == int.MinValue;
+        }
     }
 }

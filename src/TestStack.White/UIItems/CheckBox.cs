@@ -1,3 +1,4 @@
+using Interop.UIAutomationClient;
 using System.Windows.Automation;
 using TestStack.White.Recording;
 using TestStack.White.UIItemEvents;
@@ -32,7 +33,7 @@ namespace TestStack.White.UIItems
 
         public virtual bool Checked
         {
-            get { return State.Equals(ToggleState.On); }
+            get { return State.Equals(ToggleState.ToggleState_On); }
             set
             {
                 if (Checked == value) return;
@@ -55,7 +56,7 @@ namespace TestStack.White.UIItems
                               ActionPerformed();
                               eventListener.EventOccured(new CheckBoxEvent(this));
                           };
-            Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.Element, handler,
+            Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.TreeScope_Element, handler,
                                                                 TogglePattern.ToggleStateProperty);
         }
 

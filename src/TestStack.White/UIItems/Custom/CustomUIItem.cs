@@ -14,7 +14,7 @@ namespace TestStack.White.UIItems.Custom
 
         /// <summary>
         /// Container which can used to find the UIItems inside this item.
-        /// e.g. Container.Get<TextBox>("day") to find a TextBox with AutomationId "day" inside this item.
+        /// e.g. Container.Get&lt;TextBox&gt;("day") to find a TextBox with AutomationId "day" inside this item.
         /// You can also use any SearchCriteria for performing the find
         /// </summary>
         protected virtual UIItemContainer Container

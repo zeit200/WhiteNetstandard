@@ -1,3 +1,4 @@
+using System.Drawing;
 using System.Windows;
 
 namespace TestStack.White.UIItems.Scrolling
@@ -23,9 +24,9 @@ namespace TestStack.White.UIItems.Scrolling
             get { return false; }
         }
 
-        public virtual Rect Bounds
+        public virtual Rectangle Bounds
         {
-            get { return Rect.Empty; }
+            get { return Rectangle.Empty; }
         }
     }
 }

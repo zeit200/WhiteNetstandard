@@ -1,4 +1,5 @@
 using Castle.Core.Logging;
+using Interop.UIAutomationClient;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -19,7 +20,6 @@ using TestStack.White.UIItems.Scrolling;
 using TestStack.White.UIItems.WindowItems;
 using TestStack.White.WindowsAPI;
 using Action = TestStack.White.UIItems.Actions.Action;
-using Point = System.Windows.Point;
 
 namespace TestStack.White.UIItems
 {
@@ -214,13 +214,13 @@ namespace TestStack.White.UIItems
         /// </summary>
         public virtual Point Location
         {
-            get { return automationElement.Current.BoundingRectangle.TopLeft; }
+            get { return automationElement.Current.BoundingRectangle.Location; }
         }
 
         /// <summary>
         /// Implements <see cref="IUIItem.Bounds"/>
         /// </summary>
-        public virtual Rect Bounds
+        public virtual Rectangle Bounds
         {
             get { return automationElement.Current.BoundingRectangle; }
         }
@@ -268,14 +268,7 @@ namespace TestStack.White.UIItems
         /// <summary>
         /// Implements <see cref="IUIItem.DrawHighlight(Color)"/>
         /// </summary>
-        public virtual void DrawHighlight(Color color)
-        {
-            var rectangle = AutomationElement.Current.BoundingRectangle;
-            if (rectangle != Rect.Empty)
-            {
-                new Drawing.FrameRectangle(color, rectangle).Highlight();
-            }
-        }
+        public virtual void DrawHighlight(Color color) => throw new NotImplementedException();
 
         /// <summary>
         /// Implements <see cref="IUIItem.Capture"/>
@@ -420,7 +413,7 @@ namespace TestStack.White.UIItems
         /// <summary>
         /// Implements <see cref="IUIItem.ErrorProviderMessage"/>
         /// </summary>
-        public virtual string ErrorProviderMessage(Window window)
+        public virtual string ErrorProviderMessage(WindowItems.Window window)
         {
             var element =
                 AutomationElement.FromPoint(automationElement.Current.BoundingRectangle.ImmediateExteriorEast());
@@ -572,7 +565,7 @@ namespace TestStack.White.UIItems
         protected virtual void HookClickEvent(IUIItemEventListener eventListener)
         {
             handler = delegate { eventListener.EventOccured(new UIItemClickEvent(this)); };
-            Automation.AddAutomationEventHandler(InvokePattern.InvokedEvent, automationElement, TreeScope.Element,
+            Automation.AddAutomationEventHandler(InvokePattern.InvokedEvent, automationElement, TreeScope.TreeScope_Element,
                                                  handler);
         }
 

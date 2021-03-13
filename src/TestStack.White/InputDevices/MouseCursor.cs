@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 namespace TestStack.White.InputDevices
 {
@@ -58,7 +57,7 @@ namespace TestStack.White.InputDevices
 
         public static List<MouseCursor> DynamicWaitCursors()
         {
-            return new List<MouseCursor> {new MouseCursor(Cursors.WaitCursor.Handle.ToInt32())};
+            return new List<MouseCursor> {new MouseCursor(LoadCursor(IntPtr.Zero, 32514).ToInt32())};
         }
 
         public static List<MouseCursor> WaitCursors
@@ -83,5 +82,8 @@ namespace TestStack.White.InputDevices
         {
             return value.ToString();
         }
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr LoadCursor(IntPtr hInstance, int lpCursorName);
     }
 }

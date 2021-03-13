@@ -1,3 +1,4 @@
+using Interop.UIAutomationClient;
 using System;
 using System.Windows.Automation;
 

@@ -1,3 +1,4 @@
+using System.Drawing;
 using System.Linq;
 using System.Windows;
 using System.Windows.Automation;
@@ -24,7 +25,7 @@ namespace TestStack.White.UIItems.ListBoxItems
                 var scrollPattern = GetPattern<ScrollPattern>();
                 var bounds = Bounds;
                 var firstVisibleItem = Items.First(i=>!i.IsOffScreen).Bounds;
-                var lastItem = Items.Last(i=>i.Bounds != Rect.Empty).Bounds;
+                var lastItem = Items.Last(i=>i.Bounds != Rectangle.Empty).Bounds;
                 var verticalViewSize = scrollPattern.Current.VerticalViewSize;
                 var calculator = new SilverlightComboBoxVerticalSpanCalculator(bounds, firstVisibleItem, lastItem, verticalViewSize);
                 return calculator.VerticalSpan;

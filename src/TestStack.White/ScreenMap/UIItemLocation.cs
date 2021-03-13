@@ -1,3 +1,4 @@
+using System.Drawing;
 using System.Runtime.Serialization;
 using System.Windows;
 using TestStack.White.UIItems.Finders;

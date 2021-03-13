@@ -1,3 +1,5 @@
+using Interop.UIAutomationClient;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
@@ -27,7 +29,7 @@ namespace TestStack.White.UIItems.TreeItems
 
         public virtual bool IsExpanded()
         {
-            return ValueOfEquals(ExpandCollapsePattern.ExpandCollapseStateProperty, ExpandCollapseState.Expanded);
+            return ValueOfEquals(ExpandCollapsePattern.ExpandCollapseStateProperty, ExpandCollapseState.ExpandCollapseState_Expanded);
         }
 
         public virtual ExpandCollapseState DisplayState

@@ -1,3 +1,4 @@
+using Interop.UIAutomationClient;
 using System.Collections.Generic;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
@@ -62,7 +63,7 @@ namespace TestStack.White.UIItems.TabItems
         public override void HookEvents(IUIItemEventListener eventListener)
         {
             handler = delegate { eventListener.EventOccured(new TabEvent(this)); };
-            Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.Descendants, handler, SelectionItemPattern.IsSelectedProperty);
+            Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.TreeScope_Descendants, handler, SelectionItemPattern.IsSelectedProperty);
         }
 
         public override void UnHookEvents()

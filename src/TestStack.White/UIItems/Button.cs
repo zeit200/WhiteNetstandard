@@ -1,3 +1,4 @@
+using Interop.UIAutomationClient;
 using System.Windows.Automation;
 using TestStack.White.Recording;
 using TestStack.White.UIItems.Actions;

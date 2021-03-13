@@ -1,3 +1,4 @@
+using System.Drawing;
 using System.Windows;
 using Castle.Core.Logging;
 using TestStack.White.Configuration;
@@ -6,13 +7,13 @@ namespace TestStack.White.UIItems.ListBoxItems
 {
     public class WPFComboBoxVerticalSpanCalculator
     {
-        private readonly Rect firstItem;
-        private readonly Rect lastItem;
-        private readonly Rect combo;
+        private readonly Rectangle firstItem;
+        private readonly Rectangle lastItem;
+        private readonly Rectangle combo;
         private readonly double percentVisible;
         private readonly ILogger logger = CoreAppXmlConfiguration.Instance.LoggerFactory.Create(typeof(WPFComboBoxVerticalSpanCalculator));
 
-        public WPFComboBoxVerticalSpanCalculator(Rect combo, Rect firstItem, Rect lastItem, double percentVisible)
+        public WPFComboBoxVerticalSpanCalculator(Rectangle combo, Rectangle firstItem, Rectangle lastItem, double percentVisible)
         {
             this.firstItem = firstItem;
             this.lastItem = lastItem;

@@ -1,3 +1,4 @@
+using Interop.UIAutomationClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,12 +42,12 @@ namespace TestStack.White.AutomationElementSearch
 
         public virtual List<AutomationElement> Children(AutomationSearchCondition automationSearchCondition)
         {
-            return automationElement.FindAll(TreeScope.Children, automationSearchCondition.Condition).Cast<AutomationElement>().ToList();
+            return automationElement.FindAll(TreeScope.TreeScope_Children, automationSearchCondition.Condition).Cast<AutomationElement>().ToList();
         }
 
         public virtual AutomationElement Child(AutomationSearchCondition automationSearchCondition)
         {
-            return automationElement.FindFirst(TreeScope.Children, automationSearchCondition.Condition);
+            return automationElement.FindFirst(TreeScope.TreeScope_Children, automationSearchCondition.Condition);
         }
 
         public virtual AutomationElement Descendant(AutomationSearchCondition searchCondition)
@@ -84,12 +85,12 @@ namespace TestStack.White.AutomationElementSearch
         public virtual AutomationElement FindWindow(SearchCriteria searchCriteria, int processId)
         {
             var condition = searchCriteria.AutomationConditionWith(new PropertyCondition(AutomationElement.ProcessIdProperty, processId));
-            return automationElement.FindFirst(TreeScope.Children, condition);
+            return automationElement.FindFirst(TreeScope.TreeScope_Children, condition);
         }
 
         public virtual AutomationElement FindWindow(SearchCriteria searchCriteria)
         {
-            return automationElement.FindFirst(TreeScope.Children, searchCriteria.AutomationCondition);
+            return automationElement.FindFirst(TreeScope.TreeScope_Children, searchCriteria.AutomationCondition);
         }
 
         public virtual AutomationElement FindChildRaw(AutomationSearchCondition automationSearchCondition)

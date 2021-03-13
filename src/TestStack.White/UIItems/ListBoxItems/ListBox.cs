@@ -1,3 +1,4 @@
+using Interop.UIAutomationClient;
 using System.Windows.Automation;
 using TestStack.White.Recording;
 using TestStack.White.UIItemEvents;
@@ -39,7 +40,7 @@ namespace TestStack.White.UIItems.ListBoxItems
                               if (e.NewValue.Equals(1)) return;
                               eventListener.EventOccured(new ListBoxEvent(this, SelectedItemText));
                           };
-            Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.Descendants, handler, SelectionItemPattern.IsSelectedProperty);
+            Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.TreeScope_Descendants, handler, SelectionItemPattern.IsSelectedProperty);
         }
 
         public override void UnHookEvents()

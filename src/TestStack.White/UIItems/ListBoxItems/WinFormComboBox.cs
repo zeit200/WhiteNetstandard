@@ -1,3 +1,4 @@
+using Interop.UIAutomationClient;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
 using TestStack.White.UIA;
@@ -34,22 +35,22 @@ namespace TestStack.White.UIItems.ListBoxItems
             get
             {
                 var itemsList = Finder.FindChildRaw(AutomationSearchCondition.ByControlType(ControlType.List));
-                return itemsList == null ? ExpandCollapseState.Collapsed : ExpandCollapseState.Expanded;
+                return itemsList == null ? ExpandCollapseState.ExpandCollapseState_Collapsed : ExpandCollapseState.ExpandCollapseState_Expanded;
             }
         }
 
         public override bool Expand()
         {
-            if (ExpandCollapseState == ExpandCollapseState.Expanded) return false;
-            var openButton = AutomationElement.FindFirst(TreeScope.Children, new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Button));
+            if (ExpandCollapseState == ExpandCollapseState.ExpandCollapseState_Expanded) return false;
+            var openButton = AutomationElement.FindFirst(TreeScope.TreeScope_Children, new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Button));
             openButton.GetPattern<InvokePattern>().Invoke();
             return true;
         }
 
         public override bool Collapse()
         {
-            if (ExpandCollapseState == ExpandCollapseState.Collapsed) return false;
-            var openButton = AutomationElement.FindFirst(TreeScope.Children, new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Button));
+            if (ExpandCollapseState == ExpandCollapseState.ExpandCollapseState_Collapsed) return false;
+            var openButton = AutomationElement.FindFirst(TreeScope.TreeScope_Children, new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Button));
             openButton.GetPattern<InvokePattern>().Invoke();
             return true;
         }

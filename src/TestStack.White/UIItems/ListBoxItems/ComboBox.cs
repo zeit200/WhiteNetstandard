@@ -1,3 +1,4 @@
+using Interop.UIAutomationClient;
 using System;
 using System.Threading;
 using System.Windows.Automation;
@@ -99,7 +100,7 @@ namespace TestStack.White.UIItems.ListBoxItems
             if (!Enabled) return false;
 
             var ecp = AutomationElement.GetPattern<ExpandCollapsePattern>();
-            if (ecp != null && ecp.Current.ExpandCollapseState == ExpandCollapseState.Collapsed)
+            if (ecp != null && ecp.Current.ExpandCollapseState == ExpandCollapseState.ExpandCollapseState_Collapsed)
             {
                 ecp.Expand();
                 Thread.Sleep(50);
@@ -111,7 +112,7 @@ namespace TestStack.White.UIItems.ListBoxItems
         public virtual bool Collapse()
         {
             var ecp = AutomationElement.GetPattern<ExpandCollapsePattern>();
-            if (ecp != null && ecp.Current.ExpandCollapseState == ExpandCollapseState.Expanded)
+            if (ecp != null && ecp.Current.ExpandCollapseState == ExpandCollapseState.ExpandCollapseState_Expanded)
             {
                 ecp.Collapse();
                 return true;
@@ -129,7 +130,7 @@ namespace TestStack.White.UIItems.ListBoxItems
                     var state = ecp.Current.ExpandCollapseState;
                     return state;
                 }
-                return ExpandCollapseState.LeafNode;
+                return ExpandCollapseState.ExpandCollapseState_LeafNode;
             }
         }
 
@@ -196,7 +197,7 @@ namespace TestStack.White.UIItems.ListBoxItems
                               lastSelectedItem = SelectedItem;
                               eventListener.EventOccured(new ComboBoxEvent(this, SelectedItemText));
                           };
-            Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.Element, handler, ExpandCollapsePattern.ExpandCollapseStateProperty);
+            Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.TreeScope_Element, handler, ExpandCollapsePattern.ExpandCollapseStateProperty);
         }
 
         public override void UnHookEvents()

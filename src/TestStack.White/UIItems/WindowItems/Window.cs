@@ -1,7 +1,9 @@
+using Interop.UIAutomationClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -50,9 +52,9 @@ namespace TestStack.White.UIItems.WindowItems
 
         static Window()
         {
-            WindowStates.Add(DisplayState.Maximized, WindowVisualState.Maximized);
-            WindowStates.Add(DisplayState.Minimized, WindowVisualState.Minimized);
-            WindowStates.Add(DisplayState.Restored, WindowVisualState.Normal);
+            WindowStates.Add(DisplayState.Maximized, WindowVisualState.WindowVisualState_Maximized);
+            WindowStates.Add(DisplayState.Minimized, WindowVisualState.WindowVisualState_Minimized);
+            WindowStates.Add(DisplayState.Restored, WindowVisualState.WindowVisualState_Normal);
         }
 
         protected Window()
@@ -72,7 +74,7 @@ namespace TestStack.White.UIItems.WindowItems
         private void InitializeWindow()
         {
             ActionPerformed();
-            Rect bounds = Desktop.Instance.Bounds;
+            Rectangle bounds = Desktop.Instance.Bounds;
             if (!bounds.Contains(Bounds) && (TitleBar != null && TitleBar.MinimizeButton != null))
             {
                 Logger.WarnFormat(
@@ -352,7 +354,7 @@ UI actions on window needing mouse would not work in area not falling under the 
         {
             handler = delegate { };
             Automation.AddAutomationEventHandler(AutomationElement.MenuOpenedEvent, automationElement,
-                                                 TreeScope.Descendants, handler);
+                                                 TreeScope.TreeScope_Descendants, handler);
         }
 
         public override void UnHookEvents()
@@ -469,7 +471,7 @@ UI actions on window needing mouse would not work in area not falling under the 
             get
             {
                 AutomationElementCollection allElements =
-                    automationElement.FindAll(TreeScope.Descendants | TreeScope.Element, Condition.TrueCondition);
+                    automationElement.FindAll(TreeScope.TreeScope_Descendants | TreeScope.TreeScope_Element, System.Windows.Automation.Condition.TrueCondition);
                 return
                     allElements.Contains(
                         element =>

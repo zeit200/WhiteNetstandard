@@ -37,8 +37,7 @@ namespace TestStack.White
 
         public virtual Bitmap CaptureDesktop()
         {
-            var bounds = System.Windows.Forms.Screen.PrimaryScreen.Bounds;
-            var sz = bounds.Size;
+            var sz = new Size(1920, 1080);
             var hDesk = GetDesktopWindow();
             var hSrce = GetWindowDC(hDesk);
             var hDest = CreateCompatibleDC(hSrce);
@@ -54,9 +53,8 @@ namespace TestStack.White
             return bmp;            
         }
 
-        public virtual Bitmap CaptureArea(Rect rect)
+        public virtual Bitmap CaptureArea(Rectangle rectangle)
         {
-            var rectangle = rect.ToRectangle();
             var width = rectangle.Right - rectangle.Left;
             var height = rectangle.Bottom - rectangle.Top;
             var bmp = new Bitmap(width, height, PixelFormat.Format32bppArgb);

@@ -71,7 +71,7 @@ namespace TestStack.White
         /// Captures a screenshot of the provided boundary and returns the bitmap
         /// </summary>
         /// <param name="bounds">Screen rectangle to capture</param>
-        public static Bitmap CaptureScreenshot(Rect bounds)
+        public static Bitmap CaptureScreenshot(Rectangle bounds)
         {
             var screenCapture = new ScreenCapture();
             return screenCapture.CaptureArea(bounds);
@@ -83,7 +83,7 @@ namespace TestStack.White
         /// <param name="bounds">Screen rectangle to capture</param>
         /// <param name="filename">The fullname of the file (including extension)</param>
         /// <param name="imageFormat">The format of the image</param>
-        public static void TakeScreenshot(Rect bounds, string filename, ImageFormat imageFormat)
+        public static void TakeScreenshot(Rectangle bounds, string filename, ImageFormat imageFormat)
         {
             var bitmap = CaptureScreenshot(bounds);
             bitmap.Save(filename, imageFormat);

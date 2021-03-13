@@ -1,3 +1,4 @@
+using System.Drawing;
 using System.Windows;
 using TestStack.White.SystemExtensions;
 
@@ -19,9 +20,9 @@ namespace TestStack.White
             return string.Format("Start: {0}, End: {1}", start, end);
         }
 
-        protected virtual bool DoesntContain(Rect rect, double otherStart, double otherEnd)
+        protected virtual bool DoesntContain(Rectangle rect, double otherStart, double otherEnd)
         {
-            if (rect.Equals(Rect.Empty)) return true;
+            if (rect.Equals(Rectangle.Empty)) return true;
             double center = (otherStart + otherEnd)/2;
             if (center.IsInvalid()) return true;
             return center < start || center > end;

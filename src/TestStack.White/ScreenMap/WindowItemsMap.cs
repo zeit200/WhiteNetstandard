@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -115,12 +116,12 @@ namespace TestStack.White.ScreenMap
         {
             var location = UIItemLocations.Find(obj => obj.Has(searchCriteria));
             if (location == null) return RectX.UnlikelyWindowPosition;
-            double xOffset = currentWindowPosition.X - lastWindowPosition.X;
-            double yOffset = currentWindowPosition.Y - lastWindowPosition.Y;
+            var xOffset = currentWindowPosition.X - lastWindowPosition.X;
+            var yOffset = currentWindowPosition.Y - lastWindowPosition.Y;
             return Offset(location.Point, xOffset, yOffset);
         }
 
-        private static Point Offset(Point point, double xOffset, double yOffset)
+        private static Point Offset(Point point, int xOffset, int yOffset)
         {
             return new Point(point.X + xOffset, point.Y + yOffset);
         }
@@ -143,8 +144,7 @@ namespace TestStack.White.ScreenMap
 
         private static DataContractSerializer CreateDataContractSerializer()
         {
-            return new DataContractSerializer(
-                typeof(WindowItemsMap), new[]{ typeof(ControlTypeSurrogate)}, int.MaxValue, false, false, new WindowsAutomationTypesSurrogates());
+            return new DataContractSerializer(typeof(WindowItemsMap));
         }
 
         private static FileStream CreateFileStream(string fileLocation)

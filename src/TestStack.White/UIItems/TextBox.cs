@@ -1,3 +1,4 @@
+using Interop.UIAutomationClient;
 using System;
 using System.Windows.Automation;
 using TestStack.White.Recording;
@@ -86,7 +87,7 @@ namespace TestStack.White.UIItems
         public override void HookEvents(IUIItemEventListener eventListener)
         {
             handler = delegate { eventListener.EventOccured(new TextBoxEvent(this)); };
-            Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.Element, handler, ValuePattern.ValueProperty);
+            Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.TreeScope_Element, handler, ValuePattern.ValueProperty);
         }
 
         public override void UnHookEvents()

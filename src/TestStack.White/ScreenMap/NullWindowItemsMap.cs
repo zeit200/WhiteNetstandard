@@ -1,3 +1,4 @@
+using System.Drawing;
 using System.Windows;
 using TestStack.White.UIA;
 using TestStack.White.UIItems.Finders;

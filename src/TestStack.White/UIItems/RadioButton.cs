@@ -1,3 +1,4 @@
+using Interop.UIAutomationClient;
 using System.Windows.Automation;
 using TestStack.White.Recording;
 using TestStack.White.UIItemEvents;
@@ -14,7 +15,7 @@ namespace TestStack.White.UIItems
         public override void HookEvents(IUIItemEventListener eventListener)
         {
             handler = delegate { eventListener.EventOccured(new RadioButtonEvent(this)); };
-            Automation.AddAutomationEventHandler(SelectionItemPattern.ElementSelectedEvent, automationElement, TreeScope.Element, handler);
+            Automation.AddAutomationEventHandler(SelectionItemPattern.ElementSelectedEvent, automationElement, TreeScope.TreeScope_Element, handler);
         }
 
         public override void UnHookEvents()

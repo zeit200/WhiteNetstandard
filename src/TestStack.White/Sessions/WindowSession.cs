@@ -1,4 +1,5 @@
 using System;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Automation;
 using Castle.Core.Logging;
@@ -70,13 +71,13 @@ namespace TestStack.White.Sessions
             windowItemsMap.Save();
         }
 
-        public virtual void Register(Window window)
+        public virtual void Register(UIItems.WindowItems.Window window)
         {
             window.Focus();
             LocationChanged(window);
         }
 
-        public virtual void LocationChanged(Window window)
+        public virtual void LocationChanged(UIItems.WindowItems.Window window)
         {
             windowItemsMap.CurrentWindowPosition = window.Location;
         }

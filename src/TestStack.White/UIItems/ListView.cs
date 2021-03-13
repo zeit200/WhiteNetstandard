@@ -1,3 +1,4 @@
+using Interop.UIAutomationClient;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Automation;
@@ -129,7 +130,7 @@ namespace TestStack.White.UIItems
             var safeAutomationEventHandler =
                 new SafeAutomationEventHandler(this, eventListener, objs => ListViewEvent.Create(this, (AutomationPropertyChangedEventArgs) objs[0]));
             handler = safeAutomationEventHandler.PropertyChange;
-            Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.Descendants, handler, SelectionItemPattern.IsSelectedProperty);
+            Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.TreeScope_Descendants, handler, SelectionItemPattern.IsSelectedProperty);
         }
 
         public override void UnHookEvents()

@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using System.Windows.Automation;
 using Castle.Core.Logging;
+using Interop.UIAutomationClient;
 using TestStack.White.Configuration;
 using TestStack.White.UIA;
 using TestStack.White.UIItems;
@@ -18,7 +19,7 @@ namespace TestStack.White
             try
             {
                 AutomationElement element =
-                    AutomationElement.RootElement.FindFirst(TreeScope.Children, new PropertyCondition(AutomationElement.NameProperty, processName));
+                    AutomationElement.RootElement.FindFirst(TreeScope.TreeScope_Children, new PropertyCondition(AutomationElement.NameProperty, processName));
                 Details(element);
             }
             catch (Exception)
@@ -47,7 +48,7 @@ namespace TestStack.White
         {
             WriteDetail(automationElement, stringBuilder, displayPadding);
             DisplayPattern(automationElement, stringBuilder, displayPadding);
-            AutomationElementCollection children = automationElement.FindAll(TreeScope.Children, Condition.TrueCondition);
+            AutomationElementCollection children = automationElement.FindAll(TreeScope.TreeScope_Children, Condition.TrueCondition);
             foreach (AutomationElement child in children)
                 Details(stringBuilder, child, displayPadding + Tab + Tab);
         }
@@ -93,7 +94,7 @@ namespace TestStack.White
         {
             string padding = level == 0 ? string.Empty : Tab;
             var windowCondition = new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Window);
-            AutomationElementCollection allWindows = baseElement.FindAll(TreeScope.Children, windowCondition);
+            AutomationElementCollection allWindows = baseElement.FindAll(TreeScope.TreeScope_Children, windowCondition);
             foreach (AutomationElement windowElement in allWindows)
             {
                 var pattern = windowElement.GetPattern<WindowPattern>();

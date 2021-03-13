@@ -1,3 +1,4 @@
+using Interop.UIAutomationClient;
 using System.Windows.Automation;
 using TestStack.White.UIItems.Actions;
 
@@ -30,7 +31,7 @@ namespace TestStack.White.UIItems.ListBoxItems
             get
             {
                 var toggleState = (ToggleState) Property(TogglePattern.ToggleStateProperty);
-                return toggleState.Equals(ToggleState.On);
+                return toggleState.Equals(ToggleState.ToggleState_On);
             }
         }
     }

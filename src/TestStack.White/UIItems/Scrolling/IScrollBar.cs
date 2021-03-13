@@ -1,3 +1,4 @@
+using System.Drawing;
 using System.Windows;
 
 namespace TestStack.White.UIItems.Scrolling
@@ -9,6 +10,6 @@ namespace TestStack.White.UIItems.Scrolling
         double MaximumValue { get; }
         void SetToMinimum();
         void SetToMaximum();
-        Rect Bounds { get; }
+        Rectangle Bounds { get; }
     }
 }

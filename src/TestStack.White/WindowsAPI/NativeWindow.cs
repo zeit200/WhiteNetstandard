@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
 using TestStack.White.Utility;
+using System.Drawing;
 
 namespace TestStack.White.WindowsAPI
 {

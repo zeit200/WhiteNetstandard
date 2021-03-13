@@ -1,3 +1,4 @@
+using Interop.UIAutomationClient;
 using System.Collections.Generic;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
@@ -100,9 +101,9 @@ namespace TestStack.White.UIItems.TreeItems
                                               eventListener.EventOccured((new TreeNodeSelectEvent(this, node)));
                                           };
 
-            Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.Subtree, clickedTreeNodeHandler,
+            Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.TreeScope_Subtree, clickedTreeNodeHandler,
                                                                 ExpandCollapsePatternIdentifiers.ExpandCollapseStateProperty);
-            Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.Subtree, selectedTreeNodeHandler,
+            Automation.AddAutomationPropertyChangedEventHandler(automationElement, TreeScope.TreeScope_Subtree, selectedTreeNodeHandler,
                                                                 SelectionItemPatternIdentifiers.IsSelectedProperty);
         }
 

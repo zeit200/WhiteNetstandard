@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Automation;
 using TestStack.White.AutomationElementSearch;
@@ -80,13 +81,13 @@ namespace TestStack.White.Factory
             return new UIItemCollection(Finder.Descendants(searchCriteria.AutomationSearchCondition), actionListener, searchCriteria.CustomItemType);
         }
 
-        public virtual Image WinFormImage(string primaryIdentification, IActionListener actionListener)
+        public virtual UIItems.Image WinFormImage(string primaryIdentification, IActionListener actionListener)
         {
             AutomationElement element = Finder.Descendant(SearchCriteria.ByAutomationId(primaryIdentification).AutomationCondition);
-            return new Image(element, actionListener);
+            return new UIItems.Image(element, actionListener);
         }
 
-        public virtual UIItemCollection ItemsWithin(Rect bounds, IActionListener actionListener)
+        public virtual UIItemCollection ItemsWithin(Rectangle bounds, IActionListener actionListener)
         {
             var collection = new UIItemCollection();
             List<AutomationElement> descendants = Finder.Descendants(AutomationSearchCondition.All);

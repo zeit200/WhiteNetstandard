@@ -8,7 +8,6 @@ using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.Scrolling;
 using TestStack.White.UIItems.WindowItems;
 using TestStack.White.WindowsAPI;
-using Point = System.Windows.Point;
 
 namespace TestStack.White.UIItems
 {
@@ -114,9 +113,9 @@ namespace TestStack.White.UIItems
         Point Location { get; }
 
         /// <summary>
-        /// <see cref="Rect"/> Bounds of the UI Item
+        /// <see cref="Rectangle"/> Bounds of the UI Item
         /// </summary>
-        Rect Bounds { get; }
+        Rectangle Bounds { get; }
 
         /// <summary>
         /// <see cref="Point"/> ClickablePoint of the UI Item
@@ -250,7 +249,7 @@ namespace TestStack.White.UIItems
         /// </summary>
         /// <param name="window"></param>
         /// <returns></returns>
-        string ErrorProviderMessage(Window window);
+        string ErrorProviderMessage(WindowItems.Window window);
 
         /// <summary>
         /// Log Structure of the UI Item
